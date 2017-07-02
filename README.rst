@@ -43,7 +43,7 @@ Tests can be run with::
 
 which uses `mocha <https://mochajs.org/>`_, `chai <http://chaijs.com/>`_, and `supertest <https://github.com/visionmedia/supertest>`_ (with `supertest-as-promised <https://github.com/WhoopInc/supertest-as-promised>`_ for convenience) to run all of the available tests. `Travis-CI <https://travis-ci.org/>`_ is used to
 
-  - install packages and check dependencies,
-  - run the ``mocha`` test suite,
-  - and deploy to `heroku <https://dashboard.heroku.com/>`_
+- install packages and check dependencies,
+- run the ``mocha`` test suite,
+- and deploy to `heroku <https://dashboard.heroku.com/>`_
 
