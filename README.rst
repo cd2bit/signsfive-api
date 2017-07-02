@@ -1,6 +1,9 @@
 SignsFive API
 =============
 
+.. image:: https://travis-ci.org/deafchi/signsfive-api.svg?branch=master
+    :target: https://travis-ci.org/deafchi/signsfive-api
+
 Quick Start
 -----------
 
