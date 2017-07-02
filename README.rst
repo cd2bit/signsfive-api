@@ -1,3 +1,8 @@
+.. image:: signsfive-announcement-facebook_1200x630.jpg
+    :target: http://signsfive.com/
+
+----------------------
+
 SignsFive API
 =============
 
