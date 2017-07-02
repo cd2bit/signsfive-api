@@ -10,7 +10,15 @@ var server = restify.createServer({
 server.use(restify.plugins.bodyParser());
 
 server.get('/', function(req, res, next){
-  res.send({'message': 'welcome to the api'});
+  // hasOwnProperty avoids inherited properties
+  var routes =
+    Object.keys(server.router.mounts)
+          .filter(function(k){ return server.router.mounts.hasOwnProperty(k); })
+          .map(function(k){
+            var val = server.router.mounts[k];
+            return {path: val.spec.path, method: val.spec.method, versions: val.spec.versions};
+          });
+  res.send({routes: routes});
   next();
 });
 
