@@ -6,7 +6,7 @@ Quick Start
 
 .. code-block::
 
-  nvm use v5.5.0
+  nvm use
   npm install
   npm start
 
