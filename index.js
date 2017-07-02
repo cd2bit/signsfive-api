@@ -2,7 +2,10 @@
 require('dotenv').config();
 
 var restify = require('restify');
-var server = restify.createServer();
+var server = restify.createServer({
+  name: process.env.npm_package_name,
+  version: process.env.npm_package_version
+});
 
 server.use(restify.plugins.bodyParser());
 
@@ -11,7 +14,16 @@ server.get('/', function(req, res, next){
   next();
 });
 
+server.get('/name', function(req, res, next){
+  res.send({name: process.env.npm_package_name});
+  next();
+});
 
-server.listen(8080, function() {
+server.get('/version', function(req, res, next){
+  res.send({version: process.env.npm_package_version});
+  next();
+});
+
+server.listen(process.env.PORT, function() {
   console.log('%s listening at %s', server.name, server.url);
 });
