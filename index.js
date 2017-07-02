@@ -7,7 +7,10 @@ var server = restify.createServer({
   version: process.env.npm_package_version
 });
 
+server.use(restify.plugins.acceptParser(server.acceptable))
 server.use(restify.plugins.bodyParser());
+server.use(restify.plugins.gzipResponse());
+server.use(restify.plugins.throttle({burst: 5, rate: 1, ip: true}));
 
 server.get('/', function(req, res, next){
   // hasOwnProperty avoids inherited properties
