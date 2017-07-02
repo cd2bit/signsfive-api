@@ -4,6 +4,8 @@ require('dotenv').config();
 var restify = require('restify');
 var errors = require('restify-errors');
 var logger = require('./logger');
+var utils = require('./utils');
+
 var server = restify.createServer({
   name: process.env.npm_package_name,
   version: process.env.npm_package_version,
@@ -18,13 +20,7 @@ server.use(restify.plugins.requestLogger());
 
 server.get('/', function(req, res, next){
   // hasOwnProperty avoids inherited properties
-  var routes =
-    Object.keys(server.router.mounts)
-          .filter(function(k){ return server.router.mounts.hasOwnProperty(k); })
-          .map(function(k){
-            var val = server.router.mounts[k];
-            return {path: val.spec.path, method: val.spec.method, versions: val.spec.versions};
-          });
+  var routes = utils.list_routes(server);
   res.send({routes: routes});
   next();
 });
@@ -42,3 +38,5 @@ server.get('/version', function(req, res, next){
 server.listen(process.env.PORT, function() {
   console.log('%s listening at %s', server.name, server.url);
 });
+
+module.exports.server=server;
