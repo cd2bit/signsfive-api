@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var supertest = require('supertest-as-promised');
+var supertest = require('supertest');
 var server = require('../index').server;
 var utils = require('../utils');
 
