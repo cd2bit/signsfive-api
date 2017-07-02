@@ -1,0 +1,23 @@
+{
+  "name": "signsfive-api",
+  "version": "1.0.0",
+  "description": "API for SignsFive",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deafchi/signsfive-api.git"
+  },
+  "author": "SignsFive",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deafchi/signsfive-api/issues"
+  },
+  "homepage": "https://github.com/deafchi/signsfive-api#readme",
+  "dependencies": {
+    "restify": "^5.0.0",
+    "winston": "^2.3.1"
+  }
+}
