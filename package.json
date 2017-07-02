@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/deafchi/signsfive-api#readme",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "restify": "^5.0.0",
     "winston": "^2.3.1"
   }
