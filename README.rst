@@ -13,7 +13,7 @@ Quick Start
 Logging with Bunyan
 ===================
 
-`Bunyan <https://github.com/trentm/node-bunyan>`_ is used for all of our logging purposes. We create a single instance from which all children are born in `logging.js <logging.js>`_.
+`Bunyan <https://github.com/trentm/node-bunyan>`_ is used for all of our logging purposes. We create a single instance from which all children are born in `logger.js <logger.js>`_.
 
 Logging in the Code
 -------------------
