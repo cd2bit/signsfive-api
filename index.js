@@ -2,15 +2,18 @@
 require('dotenv').config();
 
 var restify = require('restify');
+var logger = require('./logger');
 var server = restify.createServer({
   name: process.env.npm_package_name,
-  version: process.env.npm_package_version
+  version: process.env.npm_package_version,
+  log: logger
 });
 
 server.use(restify.plugins.acceptParser(server.acceptable))
 server.use(restify.plugins.bodyParser());
 server.use(restify.plugins.gzipResponse());
 server.use(restify.plugins.throttle({burst: 5, rate: 1, ip: true}));
+server.use(restify.plugins.requestLogger());
 
 server.get('/', function(req, res, next){
   // hasOwnProperty avoids inherited properties
