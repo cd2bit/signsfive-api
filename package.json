@@ -22,7 +22,8 @@
     "bunyan": "^1.8.10",
     "dotenv": "^4.0.0",
     "restify": "^5.0.0",
-    "restify-errors": "^4.3.0"
+    "restify-errors": "^4.3.0",
+    "sequelize": "^4.17.2"
   },
   "devDependencies": {
     "chai": "^4.0.2",
