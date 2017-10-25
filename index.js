@@ -3,29 +3,15 @@ require('dotenv').config();
 
 var restify = require('restify');
 var errors = require('restify-errors');
-var logger = require('./logger');
+var logger = require('./services/logger');
 var utils = require('./utils');
+var sequelize = require('./services/db');
 
 var server = restify.createServer({
   name: process.env.npm_package_name,
   version: process.env.npm_package_version,
   log: logger
 });
-
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL, {
-  dialect: 'mysql',
-  pool: {min: 0, max: 10, idle: 100},
-  operatorsAliases: false
-});
-
-sequelize
-  .authenticate()
-  .then(function(){
-    logger.info('Database connection has been established successfully.');
-  }).catch(function(err){
-    logger.error(err, 'Unable to connect to the database');
-  });
 
 server.use(restify.plugins.acceptParser(server.acceptable))
 server.use(restify.plugins.bodyParser());
