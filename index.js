@@ -5,7 +5,7 @@ var restify = require('restify');
 var errors = require('restify-errors');
 var logger = require('./services/logger');
 var utils = require('./utils');
-var sequelize = require('./services/db');
+const sequelize = require('./services/db');
 
 var server = restify.createServer({
   name: process.env.npm_package_name,
