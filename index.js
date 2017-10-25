@@ -7,6 +7,7 @@ var logger = require('./services/logger');
 var utils = require('./utils');
 var models = require('./db/models');
 
+/* here's a way to check that we can connect to database correctly
 models.sequelize
   .authenticate()
   .then(function(){
@@ -14,6 +15,7 @@ models.sequelize
   }).catch(function(err){
     logger.error(err, 'Unable to connect to the database');
   });
+*/
 
 var server = restify.createServer({
   name: process.env.npm_package_name,
