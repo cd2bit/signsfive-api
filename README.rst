@@ -58,3 +58,15 @@ which uses `mocha <https://mochajs.org/>`_, `chai <http://chaijs.com/>`_, and `s
 Database Schema Diagram
 =======================
 `see details <documentation/SCHEMA-DIAGRAM.rst>`_
+
+Code Structure
+==============
+
+- `config/ <config/>`_ contains JSON-configuration files for database and other services
+- `db/ <db/>`_ contains database model, seeder, and migration files
+- `index.js <index.js>`_ is our server entrypoint
+- `package.json <package.json>`_ is self-explanatory
+- `scripts/ <scripts/>`_ contains various scripts, such as those referenced by `package.json <package.json>`_
+- `services/ <services/>`_ contains code that runs various services as singletons, the exception being sequelize which is in `db/ <db/>`_
+- `test/ <test/>`_ contains our tests
+- `utils.js <utils.js>`_ contains some utility functions we like
