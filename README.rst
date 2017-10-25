@@ -55,14 +55,14 @@ which uses `mocha <https://mochajs.org/>`_, `chai <http://chaijs.com/>`_, and `s
 - run the ``mocha`` test suite,
 - and deploy to `heroku <https://dashboard.heroku.com/>`_
 
-Database Schema Diagram
-=======================
-`see details <documentation/SCHEMA-DIAGRAM.rst>`_
+Documentation
+=============
 
 Code Structure
-==============
+--------------
 
-- `config/ <config/>`_ contains JSON-configuration files for database and other services
+- `.sequelizerc <.sequelizerc>`_ contains configuration for the `sequelize cli <https://github.com/sequelize/cli>`_
+- `config/ <config/>`_ contains configuration files for database and other services
 - `db/ <db/>`_ contains database model, seeder, and migration files
 - `index.js <index.js>`_ is our server entrypoint
 - `package.json <package.json>`_ is self-explanatory
@@ -70,3 +70,41 @@ Code Structure
 - `services/ <services/>`_ contains code that runs various services as singletons, the exception being sequelize which is in `db/ <db/>`_
 - `test/ <test/>`_ contains our tests
 - `utils.js <utils.js>`_ contains some utility functions we like
+
+Database Management
+-------------------
+
+See `sequelize tutorial <http://docs.sequelizejs.com/manual/tutorial/migrations.html>`_ for in-depth details. Setting up the structure for the first time with the `sequelize cli <https://github.com/sequelize/cli>`_ is as easy as running::
+
+  node_modules/.bin/sequelize init
+
+To view all possible commands, run::
+
+  node_modules/.bin/sequelize
+
+Models and Migrations
+~~~~~~~~~~~~~~~~~~~~~
+
+To create a model, you can use the ``model:generate`` command::
+
+  node_modules/.bin/sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string
+
+which creates a ``User`` model in `db/models/ <db/models/>`_ folder and a migration file with name like ``XYZ-create-user.js`` in `db/migrations/ <db/migrations/>`_ folder. You can then run this migration::
+
+  node_modules/.bin/sequelize db:migrate
+
+to create this new user table. Similarly, you can undo this migration with::
+
+  node_modules/.bin/sequelize db:migrate:undo
+
+or to undo all::
+
+  node_modules/.bin/sequelize db:migrate:undo:all
+
+or to a specific migration::
+
+   node_modules/.bin/sequelize db:migrate:undo:all --to XYZ-create-user.js
+
+Database Schema Diagram
+-----------------------
+`see details <documentation/SCHEMA-DIAGRAM.rst>`_
