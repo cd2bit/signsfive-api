@@ -7,6 +7,14 @@ var logger = require('./services/logger');
 var utils = require('./utils');
 var models = require('./db/models');
 
+models.sequelize
+  .authenticate()
+  .then(function(){
+    logger.info('Database connection has been established successfully.');
+  }).catch(function(err){
+    logger.error(err, 'Unable to connect to the database');
+  });
+
 var server = restify.createServer({
   name: process.env.npm_package_name,
   version: process.env.npm_package_version,
