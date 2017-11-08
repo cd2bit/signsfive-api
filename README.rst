@@ -55,6 +55,6 @@ which uses `mocha <https://mochajs.org/>`_, `chai <http://chaijs.com/>`_, and `s
 - run the ``mocha`` test suite,
 - and deploy to `heroku <https://dashboard.heroku.com/>`_
 
-Schema diagram
-==============
+Database Schema Diagram
+=======================
 `see details <documentation/SCHEMA-DIAGRAM.rst>`_
