@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        Author.hasMany(models.Sign, {as: "Signs"})
+        Author.hasMany(models.Sign, {as: "Signs"});
       }
     }
   });
