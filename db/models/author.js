@@ -1,19 +1,19 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var User = sequelize.define('User', {
+  var Author = sequelize.define('Author', {
     email: {
       type: DataTypes.STRING,
       validate: {
-	isEmail: true,
-	notNull: true
+        isEmail: true,
+        notNull: true
       }
     },
     username: {
       type: DataTypes.STRING,
       validate: {
-	isAlphanumeric: true,
-	notNull: true,
-	len: [3, 15]
+        isAlphanumeric: true,
+        notNull: true,
+        len: [3, 15]
       }
     }
   }, {
@@ -23,5 +23,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return User;
+  return Author;
 };

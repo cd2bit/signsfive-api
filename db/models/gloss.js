@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Introspect = sequelize.define('Introspect', {
+  var Gloss = sequelize.define('Gloss', {
     name: DataTypes.STRING,
     description: DataTypes.TEXT
   }, {
@@ -10,5 +10,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return Introspect;
+  return Gloss;
 };
