@@ -71,6 +71,10 @@ Code Structure
 - `test/ <test/>`_ contains our tests
 - `utils.js <utils.js>`_ contains some utility functions we like
 
+Database Schema Diagram
+-----------------------
+`see details <documentation/SCHEMA-DIAGRAM.rst>`_
+
 Database Management
 -------------------
 
@@ -105,6 +109,13 @@ or to a specific migration::
 
    node_modules/.bin/sequelize db:migrate:undo:all --to XYZ-create-user.js
 
-Database Schema Diagram
------------------------
-`see details <documentation/SCHEMA-DIAGRAM.rst>`_
+Database Setup
+==============
+
+To set up the dev environment locally for MySQL, I just ran ``brew install mysql`` to install it, then::
+
+  $ mysql.server start
+  $ mysql -u root
+  mysql> GRANT ALL PRIVILEGES ON signsfive_dev.* TO 'signsfive_dev'@'localhost' IDENTIFIED BY 'signsfive_dev';
+
+to create a ``signsfive_dev`` user with the same password and full access to the database of the same name.
