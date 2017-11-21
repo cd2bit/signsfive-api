@@ -13,3 +13,5 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Region;
 };
+
+// https://stackoverflow.com/questions/32059758/how-to-insert-a-postgis-geometry-point-in-sequelize-orm
