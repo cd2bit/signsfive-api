@@ -13,13 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       notNull: true
     }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        Gloss.belongsToMany(models.Source, {as: "Sources", through: "gloss_source", foreignKey: "gloss_id", otherKey: "source_id"});
-        Gloss.belongsToMany(Gloss, {as: "AlternativeGlosses", through: "gloss_gloss", foreignKey: "gloss_id", otherKey: "alt_gloss_id"});
-      }
-    }
   });
+
+  Gloss.associate = models => {
+    Gloss.belongsToMany(models.Source, {as: "Sources", through: "gloss_source", foreignKey: "gloss_id", otherKey: "source_id"});
+    Gloss.belongsToMany(Gloss, {as: "AlternativeGlosses", through: "gloss_gloss", foreignKey: "gloss_id", otherKey: "alt_gloss_id"});
+  };
+
   return Gloss;
 };

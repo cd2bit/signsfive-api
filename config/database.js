@@ -1,8 +1,8 @@
 module.exports = {
   development: {
-    username: 'database_dev',
-    password: 'database_dev',
-    database: 'database_dev',
+    username: 'signsfive_dev',
+    password: 'signsfive_dev',
+    database: 'signsfive_dev',
     host: '127.0.0.1',
     dialect: 'mysql',
     operatorsAliases: false

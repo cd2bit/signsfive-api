@@ -13,13 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       notNull: true
     }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        Category.belongsToMany(models.Source, {as: "Sources", through: "category_source", foreignKey: "category_id", otherKey: "source_id"});
-        Category.belongsToMany(models.Sign, {as: "Signs", through: "category_sign", foreignKey: "category_id", otherKey: "sign_id"});
-      }
-    }
   });
+
+  Category.associate = models => {
+    Category.belongsToMany(models.Source, {as: "Sources", through: "category_source", foreignKey: "category_id", otherKey: "source_id"});
+    Category.belongsToMany(models.Sign, {as: "Signs", through: "category_sign", foreignKey: "category_id", otherKey: "sign_id"});
+  };
+
   return Category;
 };

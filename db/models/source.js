@@ -7,13 +7,12 @@ module.exports = (sequelize, DataTypes) => {
         isUrl: true
       }
     }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        Source.belongsToMany(models.Gloss, {as: "Glosses", through: "gloss_source", foreignKey: "source_id", otherKey: "gloss_id"});
-        Source.belongsToMany(models.Category, {as: "Categories", through: "category_source", foreignKey: "source_id", otherKey: "category_id"});
-      }
-    }
   });
+
+  Source.associate = models => {
+    Source.belongsToMany(models.Gloss, {as: "Glosses", through: "gloss_source", foreignKey: "source_id", otherKey: "gloss_id"});
+    Source.belongsToMany(models.Category, {as: "Categories", through: "category_source", foreignKey: "source_id", otherKey: "category_id"});
+  };
+
   return Source;
 };

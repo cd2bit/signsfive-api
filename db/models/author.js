@@ -22,12 +22,11 @@ module.exports = (sequelize, DataTypes) => {
         notNull: true
       }
     }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        Author.hasMany(models.Sign, {as: "Signs"});
-      }
-    }
   });
+
+  Author.associate = models => {
+    Author.hasMany(models.Sign, {as: "Signs"});
+  };
+
   return Author;
 };
