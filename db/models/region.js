@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        Region.belongsToMany(models.Author, {as: "Authors", through: "author_region", foreignKey: "region_id", otherKey: "author_id"});
+        Region.hasMany(models.Author, {as: "Authors"});
         Region.belongsToMany(models.Sign, {as: "Signs", through: "region_sign", foreignKey: "region_id", otherKey: "sign_id"});
       }
     }
