@@ -15,11 +15,17 @@ module.exports = (sequelize, DataTypes) => {
         notNull: true,
         len: [3, 15]
       }
+    },
+    auth0_id: {
+      type: DataTypes.STRING,
+      validate: {
+        notNull: true
+      }
     }
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        Author.hasMany(models.Sign, {as: "Signs"})
       }
     }
   });
