@@ -152,17 +152,17 @@ Based on the way we've organized it, we are enforcing migrations for changes to 
 
 #. Next, edit ``db/models/sign.js`` and ``db/models/gloss.js`` to add ``belongsToMany`` relationships. For example, in ``sign.js``::
 
-  sign.associate = models => {
-    ...
-    sign.belongsToMany(models.gloss, {as: "Glosses", through: "gloss_sign", foreignKey: "signId", otherKey: "glossId"});
-    ...
-  };
+    sign.associate = models => {
+      ...
+      sign.belongsToMany(models.gloss, {as: "Glosses", through: "gloss_sign", foreignKey: "signId", otherKey: "glossId"});
+      ...
+    };
 
 #. Finally, run a series of migrations to ensure that we can rewind and playback with no issues::
 
-   node_modules/.bin/sequelize db:migrate
-   node_modules/.bin/sequelize db:migrate:undo
-   node_modules/.bin/sequelize db:migrate
+    node_modules/.bin/sequelize db:migrate
+    node_modules/.bin/sequelize db:migrate:undo
+    node_modules/.bin/sequelize db:migrate
 
 and that's it. You've created a many-to-many relationship with migrations! Note that the migration's job here was just to create the tables according to the kind of relationship we were adding (``belongsToMany``) and we configured the ``belongsToMany`` call based exactly on the table we created (``gloss_sign``) and the foreign keys in that table (``signId``, ``glossId``).
 
