@@ -9,5 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
+  source.associate = models => {
+    source.belongsToMany(models.gloss, {as: "Glosses", through: "gloss_source", foreignKey: "sourceId", otherKey: "glossId"});
+  };
+
   return source;
 };
