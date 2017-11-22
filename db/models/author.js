@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Author = sequelize.define('Author', {
+  var author = sequelize.define('author', {
     email: {
       type: DataTypes.STRING,
       validate: {
@@ -24,9 +24,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  Author.associate = models => {
-    Author.hasMany(models.Sign, {as: "Signs"});
-  };
-
-  return Author;
+  return author;
 };
