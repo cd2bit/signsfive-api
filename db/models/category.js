@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
 
   category.associate = models => {
     category.belongsToMany(models.source, {as: "Sources", through: "category_source", foreignKey: "categoryId", otherKey: "sourceId"});
+    category.belongsToMany(models.sign, {as: "Signs", through: "category_sign", foreignKey: "categoryId", otherKey: "signId"});
   };
 
   return category;

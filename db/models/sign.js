@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 
   sign.associate = models => {
     sign.belongsToMany(models.region, {as: "Regions", through: "region_sign", foreignKey: "signId", otherKey: "regionId"});
+    sign.belongsToMany(models.category, {as: "Categories", through: "category_sign", foreignKey: "signId", otherKey: "categoryId"});
   };
 
   return sign;
