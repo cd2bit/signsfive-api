@@ -166,6 +166,11 @@ Based on the way we've organized it, we are enforcing migrations for changes to 
 
 and that's it. You've created a many-to-many relationship with migrations! Note that the migration's job here was just to create the tables according to the kind of relationship we were adding (``belongsToMany``) and we configured the ``belongsToMany`` call based exactly on the table we created (``gloss_sign``) and the foreign keys in that table (``signId``, ``glossId``).
 
+For more information, see the following blog posts:
+
+- https://tech.luc.id/sequelize-it-part-1-4bb752097861
+- https://codeburst.io/sequelize-migrations-setting-up-associations-985d29b61ee7
+
 Database Setup
 ==============
 
