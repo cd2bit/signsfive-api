@@ -24,5 +24,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
+  author.associate = models => {
+    author.hasMany(models.sign, {as: "Signs", foreignKey: "authorId"});
+  };
+
   return author;
 };
