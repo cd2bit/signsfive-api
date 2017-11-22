@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
   region.associate = models => {
     region.hasMany(models.author, {as: "Authors", foreignKey: "regionId"});
+    region.belongsToMany(models.sign, {as: "Signs", through: "region_sign", foreignKey: "regionId", otherKey: "signId"});
   };
 
   return region;

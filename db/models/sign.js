@@ -10,5 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
+  sign.associate = models => {
+    sign.belongsToMany(models.region, {as: "Regions", through: "region_sign", foreignKey: "signId", otherKey: "regionId"});
+  };
+
   return sign;
 };
