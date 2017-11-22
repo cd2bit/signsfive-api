@@ -116,7 +116,7 @@ Based on the way we've organized it, we are enforcing migrations for changes to 
 
 #. Run::
 
-  node_modules/.bin/sequelize model:generate --name gloss_sign --attributes glossId:integer,signId:integer
+    node_modules/.bin/sequelize model:generate --name gloss_sign --attributes glossId:integer,signId:integer
 
 #. Remove the generated model file under ``db/models/gloss_sign.js``. We are not adding a new "model" per-se, but we are creating a new table. Technically, we should just create a migration, but it's easier to let this set up a lot of the default entries for us to make this connection work.
 #. Edit the migration file that was just created, make sure the table name is ``gloss_sign`` and not ``gloss_signs`` -- as sequelize tends to pluralize automatically.
