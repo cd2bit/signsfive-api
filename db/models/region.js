@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     loc: DataTypes.GEOMETRY('POINT')
   });
 
+  region.associate = models => {
+    region.hasMany(models.author, {as: "Authors", foreignKey: "regionId"});
+  };
+
   return region;
 };
 
