@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   gloss.associate = models => {
     gloss.belongsToMany(models.gloss, {as: "AlternativeGlosses", through: "gloss_gloss", foreignKey: "glossId", otherKey: "alt_glossId"});
     gloss.belongsToMany(models.source, {as: "Sources", through: "gloss_source", foreignKey: "glossId", otherKey: "sourceId"});
+    gloss.belongsToMany(models.sign, {as: "Signs", through: "gloss_sign", foreignKey: "glossId", otherKey: "signId"});
   };
 
   return gloss;
