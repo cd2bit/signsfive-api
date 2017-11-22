@@ -15,5 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
+  category.associate = models => {
+    category.belongsToMany(models.source, {as: "Sources", through: "category_source", foreignKey: "categoryId", otherKey: "sourceId"});
+  };
+
   return category;
 };

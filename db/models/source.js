@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
 
   source.associate = models => {
     source.belongsToMany(models.gloss, {as: "Glosses", through: "gloss_source", foreignKey: "sourceId", otherKey: "glossId"});
+    source.belongsToMany(models.category, {as: "Categories", through: "category_source", foreignKey: "sourceId", otherKey: "categoryId"});
   };
 
   return source;
