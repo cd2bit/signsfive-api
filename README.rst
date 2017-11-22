@@ -109,6 +109,63 @@ or to a specific migration::
 
    node_modules/.bin/sequelize db:migrate:undo:all --to XYZ-create-user.js
 
+Migration Procedure Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Based on the way we've organized it, we are enforcing migrations for changes to our database in an atomic, consistent, testable way. To make sure this happens correctly, realize that migrations are for changing the database structure only. Client code such as validation and helper functions for existing database relationships (adding ``belongsToMany`` for example) is not part of a migration. That said, migrations will be done on a best-effort. As an example, let's say we would like to create a migration that adds a many-to-many relationship between ``gloss`` and ``sign`` models. That is, we would like ``belongsToMany`` in both directions of the relationship.
+
+#. Run::
+
+  node_modules/.bin/sequelize model:generate --name gloss_sign --attributes glossId:integer,signId:integer
+
+#. Remove the generated model file under ``db/models/gloss_sign.js``. We are not adding a new "model" per-se, but we are creating a new table. Technically, we should just create a migration, but it's easier to let this set up a lot of the default entries for us to make this connection work.
+#. Edit the migration file that was just created, make sure the table name is ``gloss_sign`` and not ``gloss_signs`` -- as sequelize tends to pluralize automatically.
+#. Continue editing by adding the following information on the foreign keys we plan to make::
+
+      glossId: {
+        primaryKey: true,
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'glosses', key: 'id'},
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+      signId: {
+        primaryKey: true,
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'signs', key: 'id'},
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+
+#. Next, edit by removing the ``id`` column from the table. Since we are using a compound primary key of ``(glossId, signId)`` and will automatically cascade updates, we don't need to do any extra work to ensure that this is unique.
+
+# Lastly, in this file, we want to make sure we add a unique index so we can make sure searches/lookups are fast when we do table joins. So we just need to chain the ``createTable().then(...)`` like so::
+
+			}).then(() => {
+				return queryInterface.addIndex('', {
+					unique: true,
+					fields: ['Id', 'Id']
+				});
+			});
+
+#. Next, edit ``db/models/sign.js`` and ``db/models/gloss.js`` to add ``belongsToMany`` relationships. For example, in ``sign.js``::
+
+  sign.associate = models => {
+    ...
+    sign.belongsToMany(models.gloss, {as: "Glosses", through: "gloss_sign", foreignKey: "signId", otherKey: "glossId"});
+    ...
+  };
+
+#. Finally, run a series of migrations to ensure that we can rewind and playback with no issues::
+
+   node_modules/.bin/sequelize db:migrate
+   node_modules/.bin/sequelize db:migrate:undo
+   node_modules/.bin/sequelize db:migrate
+
+and that's it. You've created a many-to-many relationship with migrations! Note that the migration's job here was just to create the tables according to the kind of relationship we were adding (``belongsToMany``) and we configured the ``belongsToMany`` call based exactly on the table we created (``gloss_sign``) and the foreign keys in that table (``signId``, ``glossId``).
+
 Database Setup
 ==============
 
