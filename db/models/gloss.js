@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Gloss = sequelize.define('Gloss', {
+  var gloss = sequelize.define('gloss', {
     name: {
       type: DataTypes.STRING,
       validate: {
@@ -15,10 +15,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  Gloss.associate = models => {
-    Gloss.belongsToMany(models.Source, {as: "Sources", through: "gloss_source", foreignKey: "gloss_id", otherKey: "source_id"});
-    Gloss.belongsToMany(Gloss, {as: "AlternativeGlosses", through: "gloss_gloss", foreignKey: "gloss_id", otherKey: "alt_gloss_id"});
-  };
-
-  return Gloss;
+  return gloss;
 };
