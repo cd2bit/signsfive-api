@@ -26,11 +26,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    }).then(() => {
-      return queryInterface.addIndex('category_source', {
-        unique: true,
-        fields: ['categoryId', 'sourceId']
-      });
     });
   },
   down: (queryInterface, Sequelize) => {

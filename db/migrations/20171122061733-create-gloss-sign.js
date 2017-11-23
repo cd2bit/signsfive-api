@@ -26,11 +26,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    }).then(() => {
-      return queryInterface.addIndex('gloss_sign', {
-        unique: true,
-        fields: ['glossId', 'signId']
-      });
     });
   },
   down: (queryInterface, Sequelize) => {

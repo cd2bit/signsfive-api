@@ -26,11 +26,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    }).then(() => {
-      return queryInterface.addIndex('category_sign', {
-        unique: true,
-        fields: ['categoryId', 'signId']
-      });
     });
   },
   down: (queryInterface, Sequelize) => {

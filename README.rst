@@ -141,15 +141,6 @@ Based on the way we've organized it, we are enforcing migrations for changes to 
 
 #. Next, edit by removing the ``id`` column from the table. Since we are using a compound primary key of ``(glossId, signId)`` and will automatically cascade updates, we don't need to do any extra work to ensure that this is unique.
 
-# Lastly, in this file, we want to make sure we add a unique index so we can make sure searches/lookups are fast when we do table joins. So we just need to chain the ``createTable().then(...)`` like so::
-
-			}).then(() => {
-				return queryInterface.addIndex('', {
-					unique: true,
-					fields: ['Id', 'Id']
-				});
-			});
-
 #. Next, edit ``db/models/sign.js`` and ``db/models/gloss.js`` to add ``belongsToMany`` relationships. For example, in ``sign.js``::
 
     sign.associate = models => {

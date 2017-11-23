@@ -26,11 +26,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    }).then(() => {
-      return queryInterface.addIndex('region_sign', {
-        unique: true,
-        fields: ['regionId', 'signId']
-      });
     });
   },
   down: (queryInterface, Sequelize) => {
