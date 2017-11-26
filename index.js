@@ -28,6 +28,7 @@ server.use(restify.plugins.bodyParser());
 server.use(restify.plugins.gzipResponse());
 server.use(restify.plugins.throttle({burst: 5, rate: 1, ip: true}));
 server.use(restify.plugins.requestLogger());
+server.use(utils.auth.jwtCheck);
 
 server.get('/', function(req, res, next){
   // hasOwnProperty avoids inherited properties
