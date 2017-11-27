@@ -1,5 +1,5 @@
 // need to add a test for this
-var list_routes = function(server){
+module.exports.list_routes = function(server){
   return Object.keys(server.router.mounts)
                 .filter(function(k){ return server.router.mounts.hasOwnProperty(k); })
                 .map(function(k){
@@ -7,5 +7,3 @@ var list_routes = function(server){
                   return {path: val.spec.path, method: val.spec.method, versions: val.spec.versions};
                 });
 };
-
-module.exports.list_routes=list_routes;
