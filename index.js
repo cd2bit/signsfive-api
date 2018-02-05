@@ -26,9 +26,18 @@ var server = restify.createServer({
 server.use(restify.plugins.acceptParser(server.acceptable))
 server.use(restify.plugins.bodyParser());
 server.use(restify.plugins.gzipResponse());
-server.use(restify.plugins.throttle({burst: 5, rate: 1, ip: true}));
 server.use(restify.plugins.requestLogger());
-server.use(utils.auth.jwtCheck.unless({path: ['/', '/name', '/version']}));
+
+server.get(/\/docs\/?.*/, restify.plugins.serveStatic({
+  directory: './static',
+  default: 'index.html'
+}));
+server.get(/\/(?:vendor|css|img)\/?.*/, restify.plugins.serveStatic({
+  directory: './static/docs'
+}));
+
+server.use(restify.plugins.throttle({burst: 5, rate: 1, ip: true}));
+server.use(utils.auth.jwtCheck.unless({path: ['/name', '/version', '/routes']}));
 
 require('./api').register(server);
 
