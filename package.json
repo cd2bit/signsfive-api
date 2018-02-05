@@ -30,6 +30,7 @@
     "sequelize-cli": "^3.0.0"
   },
   "devDependencies": {
+    "apidoc": "^0.17.6",
     "chai": "^4.0.2",
     "mocha": "^3.4.2",
     "supertest": "^3.0.0"
