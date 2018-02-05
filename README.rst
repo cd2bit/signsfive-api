@@ -172,3 +172,10 @@ To set up the dev environment locally for MySQL, I just ran ``brew install mysql
   mysql> GRANT ALL PRIVILEGES ON signsfive_dev.* TO 'signsfive_dev'@'localhost' IDENTIFIED BY 'signsfive_dev';
 
 to create a ``signsfive_dev`` user with the same password and full access to the database of the same name.
+
+API Documentation
+=================
+
+API documentation can be generated with::
+
+  npm run apidoc
