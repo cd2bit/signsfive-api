@@ -1,5 +1,26 @@
 module.exports.register = (server) => {
-  server.get('/signs/12345', function(req, res, next){
+  /**
+   * @api {get} /sign/:id Get a sign
+   * @apiVersion 1.0.0
+   * @apiName  GetSign
+   * @apiGroup Sign
+   * @apiPermission none
+   *
+   * @apiParam {Number}     id          The Signs-ID
+   *
+   * @apiSuccess {Object}   sign                  A Sign object
+   * @apiSuccess {Number}   sign.id               Sign ID
+   * @apiSuccess {String}   sign.name             Sign Name
+   * @apiSuccess {Number}   sign.rank             Sign Rank
+   * @apiSuccess {String}   sign.description      Description of Sign
+   * @apiSuccess {String[]} sign.external_source  Sources for the sign
+   * @apiSuccess {String[]} sign.tutorial         Tutorials for the sign
+   * @apiSuccess {Number[]} sign.category         List of category IDs for the sign
+   * @apiSuccess {Number[]} sign.region           List of region IDs for the sign
+   * @apiSuccess {Number[]} sign.tags             List of tag IDs for the sign
+   *
+   */
+  server.get('/sign/12345', function(req, res, next){
     res.send({id: 12345,
         name: "SignA",
         rank: 1,
