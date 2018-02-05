@@ -2,26 +2,6 @@ var utils = require('../utils');
 
 module.exports.register = (server) => {
   /**
-   * @api {get} / Get the available API routes
-   * @apiVersion 1.0.0
-   * @apiName  GetRoutes
-   * @apiGroup Main
-   * @apiPermission none
-   *
-   * @apiSuccess {Object[]} routes          List of routes (Array of Objects)
-   * @apiSuccess {String}   routes.path     Path
-   * @apiSuccess {String}   routes.method   HTTP request type
-   * @apiSuccess {String[]} routes.versions List of versions (Array of Strings)
-   *
-   */
-  server.get('/', function(req, res, next){
-    // hasOwnProperty avoids inherited properties
-    var routes = utils.list_routes(server);
-    res.send({routes: routes});
-    next();
-  });
-
-  /**
    * @api {get} /name Get the name of the API
    * @apiVersion 1.0.0
    * @apiName  GetName
@@ -50,4 +30,25 @@ module.exports.register = (server) => {
     res.send({version: process.env.npm_package_version});
     next();
   });
+
+  /**
+   * @api {get} /routes Get the available API routes
+   * @apiVersion 1.0.0
+   * @apiName  GetRoutes
+   * @apiGroup Main
+   * @apiPermission none
+   *
+   * @apiSuccess {Object[]} routes          List of routes (Array of Objects)
+   * @apiSuccess {String}   routes.path     Path
+   * @apiSuccess {String}   routes.method   HTTP request type
+   * @apiSuccess {String[]} routes.versions List of versions (Array of Strings)
+   *
+   */
+  server.get('/routes', function(req, res, next){
+    // hasOwnProperty avoids inherited properties
+    var routes = utils.list_routes(server);
+    res.send({routes: routes});
+    next();
+  });
+
 };
