@@ -18,6 +18,10 @@
  * @apiDefine admin Admin access rights needed.
  * @apiVersion 1.0.0
  */
+/**
+ * @apiDefine user Registered user access rights needed.
+ * @apiVersion 1.0.0
+ */
 
 // ------------------------------------------------------------------------------------------
 // History.

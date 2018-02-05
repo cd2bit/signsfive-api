@@ -4,7 +4,7 @@ module.exports.register = (server) => {
    * @apiVersion 1.0.0
    * @apiName  GetSign
    * @apiGroup Sign
-   * @apiPermission none
+   * @apiPermission user
    *
    * @apiParam {Number}     id          The Signs-ID
    *

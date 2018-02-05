@@ -4,7 +4,7 @@ module.exports.register = (server) => {
    * @apiVersion 1.0.0
    * @apiName  GetCategories
    * @apiGroup Category
-   * @apiPermission none
+   * @apiPermission user
    *
    * @apiSuccess {Object[]} data        List of categories (Array of Objects)
    * @apiSuccess {Number}   data.id     Category ID
