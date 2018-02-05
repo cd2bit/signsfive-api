@@ -6,7 +6,8 @@
   "scripts": {
     "postinstall": "node scripts/install.js",
     "start": "sequelize db:migrate && node index.js",
-    "test": "mocha"
+    "test": "mocha",
+    "apidoc": "apidoc -i ./api/ -o ./docs/"
   },
   "repository": {
     "type": "git",
@@ -34,5 +35,8 @@
     "chai": "^4.0.2",
     "mocha": "^3.4.2",
     "supertest": "^3.0.0"
+  },
+  "apidoc": {
+    "title": "apiDoc for SignsFive API"
   }
 }
