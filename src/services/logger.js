@@ -1,7 +1,7 @@
-var bunyan = require('bunyan');
-var restify = require('restify');
+import bunyan from 'bunyan'
+import restify from 'restify'
 
-var logger = new bunyan({
+const logger = new bunyan({
   name: process.env.npm_package_name,
   streams: [
     {
@@ -14,6 +14,6 @@ var logger = new bunyan({
     }
   ],
   serializers: restify.bunyan.serializers
-});
+})
 
-module.exports=logger;
+module.exports = logger

@@ -1,1 +1,1 @@
-console.log('You have installed the SignsFive API.');
+console.log('You have installed the SignsFive API.')

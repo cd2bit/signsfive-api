@@ -9,8 +9,27 @@ SignsFive API
 .. image:: https://travis-ci.org/deafchi/signsfive-api.svg?branch=master
     :target: https://travis-ci.org/deafchi/signsfive-api
 
-Quick Start
------------
+Development with Docker Quick Start
+-----------------------------------
+
+During development, there are 3 key files:
+
+- ``.env.sample``
+- ``docker-compose.yml``
+- ``docker-compose.dev.yml``
+
+First, you need to copy ``.env.sample`` to ``.env`` and make any edits if needed in your newly copied ``.env`` file.
+
+Next, both ``docker-compose.yml`` and ``docker-compose.dev.yml`` are required, so they are combined by running command provided by scripts in package.json:
+
+.. code-block::
+
+  npm run dev
+
+NOTE: This might take signsfive_api to restart couple of time due to race condition with database starting up. See: deafchi/signsfive-api/issues/26
+
+Quick Start (Non-Docker)
+------------------------
 
 .. code-block::
 

@@ -1,9 +1,9 @@
 module.exports = {
   development: {
-    username: 'signsfive_dev',
-    password: 'signsfive_dev',
-    database: 'signsfive_dev',
-    host: '127.0.0.1',
+    username: process.env.MYSQL_USERNAME,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+    host: process.env.MYSQL_HOST,
     dialect: 'mysql',
     operatorsAliases: false
   },

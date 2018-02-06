@@ -1,4 +1,5 @@
-'use strict';
+'use strict'
+
 module.exports = (sequelize, DataTypes) => {
   var author = sequelize.define('author', {
     email: {
@@ -22,11 +23,11 @@ module.exports = (sequelize, DataTypes) => {
         notNull: true
       }
     }
-  });
+  })
 
   author.associate = models => {
-    author.hasMany(models.sign, {as: "Signs", foreignKey: "authorId"});
-  };
+    author.hasMany(models.sign, {as: 'Signs', foreignKey: 'authorId'})
+  }
 
-  return author;
-};
+  return author
+}

@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  api:
+    container_name: signsfive_api
+    image: node:alpine
+    user: node
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - API_PORT=${API_PORT}
+    volumes:
+      - ./node_modules:/home/node/app/node_modules
+      - ./scripts:/home/node/app/scripts
+      - ./src:/home/node/app/src
+      - ./.sequelizerc:/home/node/app/.sequelizerc
+      - ./package.json:/home/node/app/package.json
+      - ./package-lock.json:/home/node/app/package-lock.json
+      - ./server.log:/home/node/app/server.log
+    restart: always
+    ports:
+      - ${API_PORT}:${API_PORT}
+    command: npm start
