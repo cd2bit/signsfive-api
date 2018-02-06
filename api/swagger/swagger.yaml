@@ -1,0 +1,163 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: SignsFive API
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths
+basePath: /
+#
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+  
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: Bearer
+    in: header
+    
+paths:
+  /categories:
+    get:
+      description: Get a list of categories
+      operationId: getCategories
+      security:
+        - api_key: []
+      responses:
+        200:
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/CategoryResponse"
+
+  /routes:
+    get:
+      description: Get a list of routes
+      operationId: getRoutes
+      responses:
+        200:
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/RouteResponse"
+              
+  /name:
+    get:
+      description: Get the name of the API
+      operationId: getName
+      responses:
+        200:
+          description: Success
+          schema:
+            properties:
+              name:
+                type: string
+
+  /version:
+    get:
+      description: Get the version of the API
+      operationId: getVersion
+      responses:
+        200:
+          description: Success
+          schema:
+            properties:
+              version:
+                type: string
+        
+  /sign/{id}:
+    get:
+      description: Get a sign
+      # used as the method name of the controller
+      operationId: getSign
+      parameters:
+        - name: id
+          in: path
+          description: The sign ID
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/SignResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+
+# complex objects have schema definitions
+definitions:
+  CategoryResponse:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      short:
+        type: string
+
+  RouteResponse:
+    properties:
+      path:
+        type: string
+      method:
+        type: string
+      versions:
+        type: array
+        items:
+          type: string
+  
+  SignResponse:
+    required:
+      - id
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      rank:
+        type: number
+      description:
+        type: string
+      external_source:
+        type: array
+        items:
+          type: string
+      tutorial:
+        type: array
+        items:
+          type: string
+      category:
+        type: array
+        items:
+          type: number
+      region:
+        type: array
+        items:
+          type: number
+      tags:
+        type: array
+        items:
+          type: number
+          
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
