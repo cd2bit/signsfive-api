@@ -7,7 +7,8 @@
     "postinstall": "node scripts/install.js",
     "start": "sequelize db:migrate && node index.js",
     "test": "mocha",
-    "swagger:edit": "swagger project edit"
+    "swagger:edit": "swagger project edit",
+    "widdershins": "widdershins api/swagger/swagger.yaml -o index.md"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "supertest": "^3.0.0",
     "swagger": "^0.7.5",
     "swagger-editor": "^3.2.8",
-    "swagger-ui": "^3.9.3"
+    "swagger-ui": "^3.9.3",
+    "widdershins": "^3.0.2"
   }
 }
