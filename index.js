@@ -28,7 +28,7 @@ server.use(restify.plugins.bodyParser());
 server.use(restify.plugins.gzipResponse());
 server.use(restify.plugins.throttle({burst: 5, rate: 1, ip: true}));
 server.use(restify.plugins.requestLogger());
-server.use(utils.auth.jwtCheck.unless({path: ['/', '/name', '/version']}));
+server.use(utils.auth.jwtCheck.unless({path: ['/routes', '/name', '/version']}));
 
 require('./api').register(server);
 
