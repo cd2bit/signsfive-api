@@ -37,6 +37,7 @@ services:
       - database
     ports:
       - ${PHPMYADMIN_PORT}:80
+    restart: always
     environment:
       MYSQL_USERNAME: ${MYSQL_ROOT_USERNAME}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -44,6 +45,32 @@ services:
     networks:
       signsfive_net:
         ipv4_address: ${NETWORK_PHPMYADMIN}
+
+  swagger:
+    container_name: signsfive_swagger
+    image: swaggerapi/swagger-ui
+    volumes:
+      - ./swagger:/app/swagger
+    environment:
+      # - VERSION="v2.2.10"
+      # - FOLDER "swagger-ui-2.2.10"
+      # - API_URL=http://petstore.swagger.io/v2/swagger.json
+      # - API_URLS=""
+      # - API_KEY="**None**"
+      # - OAUTH_CLIENT_ID="**None**"
+      # - OAUTH_CLIENT_SECRET="**None**"
+      # - OAUTH_REALM="**None**"
+      # - OAUTH_APP_NAME="**None**"
+      # - OAUTH_ADDITIONAL_PARAMS="**None**"
+      - SWAGGER_JSON=/app/swagger/signsfive-api.yml
+      # - PORT=8080
+      # - BASE_URL=""
+    ports:
+      - ${SWAGGER_PORT}:8080
+    restart: always
+    networks:
+      signsfive_net:
+        ipv4_address: ${NETWORK_SWAGGER}
 
 volumes:
   db_data:

@@ -1,7 +1,5 @@
-'use strict'
-
-module.exports = (sequelize, DataTypes) => {
-  var author = sequelize.define('author', {
+export default (sequelize, DataTypes) => {
+  const author = sequelize.define('author', {
     email: {
       type: DataTypes.STRING,
       validate: {
@@ -14,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         isAlphanumeric: true,
         notNull: true,
-        len: [3, 15]
+        len: [ 3, 15 ]
       }
     },
     auth0_id: {

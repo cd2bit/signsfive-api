@@ -1,4 +1,15 @@
+// NOTE: for some reason the SignsFive API does
+// not like 'export default' being used here.
+// So, would like to dig in this sometime other time.
 module.exports = {
+  test: {
+    username: 'database_test',
+    password: null,
+    database: 'database_test',
+    host: '127.0.0.1',
+    dialect: 'mysql',
+    operatorsAliases: false
+  },
   development: {
     username: process.env.MYSQL_USERNAME,
     password: process.env.MYSQL_PASSWORD,
@@ -7,11 +18,11 @@ module.exports = {
     dialect: 'mysql',
     operatorsAliases: false
   },
-  test: {
-    username: 'database_test',
-    password: null,
-    database: 'database_test',
-    host: '127.0.0.1',
+  staging: {
+    username: process.env.MYSQL_USERNAME,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+    host: process.env.MYSQL_HOST,
     dialect: 'mysql',
     operatorsAliases: false
   },

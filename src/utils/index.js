@@ -1,5 +1,4 @@
 import auth from './auth'
-import { list_routes } from './routes'
+import listRoutes from './routes'
 
-exports.auth = auth;
-exports.list_routes = list_routes;
+export default { auth, listRoutes }

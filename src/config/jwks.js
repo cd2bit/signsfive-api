@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   cache: true,
   rateLimit: true,
   jwksRequestsPerMinute: 5,

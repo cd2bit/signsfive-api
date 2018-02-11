@@ -1,13 +1,11 @@
-'use strict'
-
-module.exports = (sequelize, DataTypes) => {
-  var category = sequelize.define('category', {
+export default (sequelize, DataTypes) => {
+  const category = sequelize.define('category', {
     name: {
       type: DataTypes.STRING,
       validate: {
         is: /^[a-z]+( [a-z]+)*$/i,
         notNull: true,
-        len: [3, 50]
+        len: [ 3, 50 ]
       }
     },
     description: {
@@ -32,4 +30,4 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   return category
-};
+}

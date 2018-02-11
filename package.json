@@ -7,9 +7,12 @@
     "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build",
     "docker:stop": "docker-compose down --remove-orphans",
     "docker:restart": "npm i && npm run docker:stop && npm run docker:dev",
+    "docker:sh": "docker exec -it signsfive_api sh",
     "postinstall": "node scripts/install.js",
     "babel-node": "babel-node --presets=latest",
     "start": "sequelize db:migrate && nodemon --exec npm run babel-node -- ./src/index.js",
+    "db:migrate": "sequelize db:migrate",
+    "db:status": "sequelize db:migrate:status",
     "build": "babel src -d dist",
     "lint": "eslint .",
     "test": "mocha --compilers js:babel-core/register"
@@ -29,6 +32,23 @@
       "latest"
     ]
   },
+  "eslintConfig": {
+    "extends": [
+      "eslint-config-standard"
+    ],
+    "globals": {
+      "beforeEach": true,
+      "describe": true,
+      "it": true,
+      "mount": true,
+      "shallow": true,
+      "spy": true,
+      "stub": true
+    }
+  },
+  "eslintIgnore": [
+    "src/db/migrations"
+  ],
   "dependencies": {
     "bunyan": "^1.8.10",
     "dotenv": "^4.0.0",
@@ -36,6 +56,7 @@
     "jwks-rsa": "^1.2.1",
     "mysql2": "^1.4.2",
     "restify": "^6.3.4",
+    "restify-cors-middleware": "^1.1.0",
     "restify-errors": "^4.3.0",
     "sequelize": "^4.17.2",
     "sequelize-cli": "^3.0.0"

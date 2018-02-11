@@ -1,1 +1,3 @@
-module.exports.jwks = require('./jwks')
+import jwks from './jwks'
+
+export default { jwks }

@@ -1,7 +1,5 @@
-'use strict'
-
-module.exports = (sequelize, DataTypes) => {
-  var source = sequelize.define('source', {
+export default (sequelize, DataTypes) => {
+  const source = sequelize.define('source', {
     url: {
       type: DataTypes.STRING,
       validate: {

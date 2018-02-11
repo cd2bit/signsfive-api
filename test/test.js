@@ -1,17 +1,10 @@
-var expect = require('chai').expect;
-var supertest = require('supertest');
-var server = require('../src/index').server;
-var utils = require('../src/utils');
+import { expect } from 'chai'
+import supertest from 'supertest'
+import server from '../src/index'
 
-var expectJSON = (app, path) => {
-  return () => {
-    return app.get(path).expect('Content-Type', /json/)
-  }
-}
-
-describe('Something', () =>{
+describe('Something', () => {
   it('should do something', () => {
-    return expect({a:1}).to.not.have.property('b')
+    return expect({ a: 1 }).to.not.have.property('b')
   })
 })
 
@@ -23,7 +16,7 @@ describe('API routes', () => {
   })
 
   describe('GET /version', () => {
-    let path;
+    let path
 
     // this beforeEach is needed as SuperAgent doesn't like .end() called more than once
     beforeEach(() => {

@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: SignsFive API
+  description: SignsFive Description goes here
+  version: 1.0.0
+
+# we will need to figure out how to make this
+servers:
+  # this is "default" port for SIGNSFIVE_API from .env.sample
+  # this can be changed and uncommented but
+  # DO NOT COMMIT the uncommented into this repo!
+  #- url: http://localhost:8282
+  #  description: Development (local) server
+  - url: https://signsfive-api-staging.herokuapp.com
+    description: Staging server
+
+paths:
+  /name:
+    get:
+      summary: Returns a name of app.
+      description: Name of API
+      responses:
+        '200':    # status code
+          description: A JSON object of project api name
+          content:
+            application/json:
+              schema: 
+                type: object
+                name: 
+                  type: string
+
+  /version:
+    get:
+      summary: Returns a version of app.
+      description: Name of API
+      responses:
+        '200':    # status code
+          description: A JSON object of project api version
+          content:
+            application/json:
+              schema: 
+                type: object
+                name: 
+                  type: string

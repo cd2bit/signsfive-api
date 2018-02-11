@@ -1,7 +1,5 @@
-'use strict'
-
-module.exports = (sequelize, DataTypes) => {
-  var region = sequelize.define('region', {
+export default (sequelize, DataTypes) => {
+  const region = sequelize.define('region', {
     name: DataTypes.STRING,
     loc: DataTypes.GEOMETRY('POINT')
   })

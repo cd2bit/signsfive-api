@@ -1,7 +1,5 @@
-'use strict'
-
-module.exports = (sequelize, DataTypes) => {
-  var sign = sequelize.define('sign', {
+export default (sequelize, DataTypes) => {
+  const sign = sequelize.define('sign', {
     giphy_id: {
       type: DataTypes.STRING,
       validate: {

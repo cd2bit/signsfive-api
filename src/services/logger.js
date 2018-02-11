@@ -1,8 +1,11 @@
-import bunyan from 'bunyan'
+import Bunyan from 'bunyan'
 import restify from 'restify'
 
-const logger = new bunyan({
-  name: process.env.npm_package_name,
+import { APP_NAME as name } from '../config/constant'
+
+// NOTE: do we want to include version in logging?
+const logger = new Bunyan({
+  name,
   streams: [
     {
       stream: process.stdout,
@@ -16,4 +19,4 @@ const logger = new bunyan({
   serializers: restify.bunyan.serializers
 })
 
-module.exports = logger
+export default logger
