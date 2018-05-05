@@ -15,7 +15,7 @@
     "db:status": "sequelize db:migrate:status",
     "build": "babel src -d dist",
     "lint": "eslint .",
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "mocha --compilers js:babel-core/register \"./test/**/*.test.js*\""
   },
   "repository": {
     "type": "git",

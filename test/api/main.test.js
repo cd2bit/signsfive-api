@@ -1,14 +1,8 @@
 import { expect } from 'chai'
 import supertest from 'supertest'
-import server from '../src/index'
+import server from '../../src/index'
 
-describe('Something', () => {
-  it('should do something', () => {
-    return expect({ a: 1 }).to.not.have.property('b')
-  })
-})
-
-describe('API routes', () => {
+describe('Main API routes', () => {
   let api
 
   beforeEach(() => {
